@@ -2,6 +2,13 @@ module github.com/2dust/AndroidLibXrayLite
 
 go 1.26
 
+// Point at our patched fork instead of the upstream module. The only diff is
+// infra/conf/xray.go: validateOutboundTransportSecurity is disabled, mirroring
+// XTLS/Xray-core@f8d54a0 ("Allow unencrypted outbounds on public Internet for
+// VLESS and Trojan"), which had not shipped in a tagged release yet when this
+// build was pinned. See vendor/xray-core's git history for the exact diff.
+replace github.com/xtls/xray-core => ../xray-core
+
 require (
 	github.com/apernet/quic-go v0.59.1-0.20260425001925-6c6cc9bcb716
 	github.com/xtls/xray-core v1.260327.1-0.20260728075948-5ca6f4b7d4dc
