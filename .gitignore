@@ -42,3 +42,8 @@ node_modules/
 
 # Ignore Go vendor dependencies
 vendor/
+
+# ZedSecure: generated geo data (run ./gen_assets.sh) and go.mod backups
+data/
+*.bak
+*-bak
