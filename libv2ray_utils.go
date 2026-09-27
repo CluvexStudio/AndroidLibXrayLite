@@ -21,7 +21,8 @@ import (
 // QueryAllOutboundTrafficStats retrieves and resets all outbound traffic counters.
 // Returns a single-line text in format: tag,direction,value;tag,direction,value;
 // Returns an empty string if the stats manager is not initialized or no counters exist.
-func (x *CoreController) QueryAllOutboundTrafficStats() string {
+func (x *CoreController) QueryAllOutboundTrafficStats() (stats string) {
+	defer recoverCall("QueryAllOutboundTrafficStats", nil, func() { stats = "" })
 	if x.statsManager == nil {
 		return ""
 	}
@@ -55,7 +56,8 @@ func (x *CoreController) QueryAllOutboundTrafficStats() string {
 // MeasureDelay measures network latency to a specified URL through the current core instance
 // Uses a 12-second timeout context and returns the round-trip time in milliseconds
 // An error is returned if the connection fails or returns an unexpected status
-func (x *CoreController) MeasureDelay(url string) (int64, error) {
+func (x *CoreController) MeasureDelay(url string) (delay int64, err error) {
+	defer recoverCall("MeasureDelay", &err, func() { delay = -1 })
 	ctx, cancel := context.WithTimeout(context.Background(), 12*time.Second)
 	defer cancel()
 
@@ -63,7 +65,8 @@ func (x *CoreController) MeasureDelay(url string) (int64, error) {
 }
 
 // MeasureOutboundDelay measures the outbound delay for a given configuration and URL
-func MeasureOutboundDelay(ConfigureFileContent string, url string) (int64, error) {
+func MeasureOutboundDelay(ConfigureFileContent string, url string) (delay int64, err error) {
+	defer recoverCall("MeasureOutboundDelay", &err, func() { delay = -1 })
 	config, err := coreserial.LoadJSONConfig(strings.NewReader(ConfigureFileContent))
 	if err != nil {
 		return -1, fmt.Errorf("config load error: %w", err)

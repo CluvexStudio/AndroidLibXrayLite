@@ -26,11 +26,13 @@ type certSha256Result struct {
 	Error  string `json:"error"`
 }
 
-func FetchTlsCertSha256(requestJSON string) string {
+func FetchTlsCertSha256(requestJSON string) (result string) {
+	defer recoverCall("FetchTlsCertSha256", nil, func() { result = `{"sha256":"","error":"internal error"}` })
 	return fetchCertSha256(requestJSON, fetchTLSCertSha256)
 }
 
-func FetchQuicCertSha256(requestJSON string) string {
+func FetchQuicCertSha256(requestJSON string) (result string) {
+	defer recoverCall("FetchQuicCertSha256", nil, func() { result = `{"sha256":"","error":"internal error"}` })
 	return fetchCertSha256(requestJSON, fetchQUICCertSha256)
 }
 

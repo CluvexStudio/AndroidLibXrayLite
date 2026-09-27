@@ -64,6 +64,7 @@ func setEnvVariable(key, value string) {
 // It sets up asset path, certificate path, XUDP base key and customizes the file reader
 // to support Android asset system
 func InitCoreEnv(envPath string, key string) {
+	defer recoverCall("InitCoreEnv", nil, nil)
 	// Set asset/cert paths
 	if len(envPath) > 0 {
 		setEnvVariable(coreAsset, envPath)
@@ -107,6 +108,7 @@ func NewCoreController(s CoreCallbackHandler) *CoreController {
 // Thread-safe method that configures and runs the Xray core with the provided configuration
 // Returns immediately if the core is already running
 func (x *CoreController) StartLoop(configContent string, tunFd int32) (err error) {
+	defer recoverCall("StartLoop", &err, nil)
 	// Set TUN fd key, 0 means do not use TUN
 	setEnvVariable(tunFdKey, strconv.Itoa(int(tunFd)))
 
@@ -123,7 +125,8 @@ func (x *CoreController) StartLoop(configContent string, tunFd int32) (err error
 
 // StopLoop safely stops the core processing loop and releases resources
 // Thread-safe method that shuts down the core instance and triggers necessary callbacks
-func (x *CoreController) StopLoop() error {
+func (x *CoreController) StopLoop() (err error) {
+	defer recoverCall("StopLoop", &err, nil)
 	x.coreMutex.Lock()
 	defer x.coreMutex.Unlock()
 
@@ -143,6 +146,7 @@ func CheckVersionX() string {
 // ReconcileBrowserDialer updates the browser dialer address and reloads its configuration
 // If the dialer address is empty, it will disable the browser dialer and close existing connections
 func ReconcileBrowserDialer(dialerAddr string) {
+	defer recoverCall("ReconcileBrowserDialer", nil, nil)
 	setEnvVariable(browserDialerAddress, dialerAddr)
 	browser_dialer.Reload()
 }
