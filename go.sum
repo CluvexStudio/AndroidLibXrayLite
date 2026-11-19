@@ -424,6 +424,8 @@ github.com/sagernet/cronet-go/all v0.0.0-20260912104727-0d28acc44093 h1:1lRUqrLc
 github.com/sagernet/cronet-go/all v0.0.0-20260912104727-0d28acc44093/go.mod h1:bvm9T9FdwHYYfWdZkLoZ4Qr9Dce0TTQ7ngXlbGZnnJk=
 github.com/sagernet/cronet-go/all v0.0.0-20261118105239-7a29333436ca h1:CjEXUSIWww3Hm/FZdMrlgNRcgiNEv5W+RXqAurPRKOY=
 github.com/sagernet/cronet-go/all v0.0.0-20261118105239-7a29333436ca/go.mod h1:Pm6ZUs9DanGcACgSlLfKSHhQtJxZOFDUGHO1S7pXmOc=
+github.com/sagernet/cronet-go/lib/android_386 v0.0.0-20261118104455-4ecba4761b20 h1:F1Z9OyYB0CalfazIfy52TS9QD/uy6s0+haN3V0D0ibw=
+github.com/sagernet/cronet-go/lib/android_386 v0.0.0-20261118104455-4ecba4761b20/go.mod h1:XXDwdjX/T8xftoeJxQmbBoYXZp8MAPFR2CwbFuTpEtw=
 github.com/sagernet/cronet-go/lib/android_amd64 v0.0.0-20260912104006-c10c03c318db h1:75fzfzaz/j1mKsqNE01KTMMP3i/9FgmPlwO2BIV8TpU=
 github.com/sagernet/cronet-go/lib/android_amd64 v0.0.0-20260912104006-c10c03c318db/go.mod h1:iNiUGoLtnr8/JTuVNj7XJbmpOAp2C6+B81KDrPxwaZM=
 github.com/sagernet/cronet-go/lib/android_amd64 v0.0.0-20261118104455-4ecba4761b20 h1:pmRrOTf+lO85f/J9IAVTlmG6S0CCgnEhrQpcaADSZvc=

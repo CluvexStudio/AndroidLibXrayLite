@@ -138,6 +138,7 @@ require (
 	github.com/sagernet/cors v1.2.1 // indirect
 	github.com/sagernet/cronet-go v0.0.0-20261118105239-7a29333436ca // indirect
 	github.com/sagernet/cronet-go/all v0.0.0-20261118105239-7a29333436ca // indirect
+	github.com/sagernet/cronet-go/lib/android_386 v0.0.0-20261118104455-4ecba4761b20 // indirect
 	github.com/sagernet/cronet-go/lib/android_amd64 v0.0.0-20261118104455-4ecba4761b20 // indirect
 	github.com/sagernet/cronet-go/lib/android_arm v0.0.0-20261118104455-4ecba4761b20 // indirect
 	github.com/sagernet/cronet-go/lib/android_arm64 v0.0.0-20261118104455-4ecba4761b20 // indirect
